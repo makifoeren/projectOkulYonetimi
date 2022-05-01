@@ -4,7 +4,8 @@ public class Depo {
 
     static Scanner scan = new Scanner(System.in);
 
-    public static void anaManu() {
+    public static void anaManu() throws InterruptedException {
+        Ogretmen.fakeOgretmenLIst();
 
         int tercih = 0;
 
