@@ -44,7 +44,7 @@ public class Depo {
 
     }
 
-    private static void cikiso() {
+    protected static void cikiso() {
 
         System.out.println("Isleminizi sonlandirdiniz... Tesekkur ederiz...");
     }

@@ -54,13 +54,17 @@ public class Ogretmen {
                 case 3: //Branstan Ogretmen Bulma
                     branstanOgrtmnBulma();
                     break;
-                case 4: //
+                case 4: //Bilgilerini Girerek Ogretmen Ekleme
+                    bilgileriGirerekOgretmenEkle();
                     break;
-                case 5: //
+                case 5: //Kimlik No Ile Kayit Silme
+                    kimlikNoileKayitSil();
                     break;
                 case 6: //
+                    Depo.anaManu();
                     break;
                 case 7: //
+                    Depo.cikiso();
                     break;
                 default:
                     System.out.println("Hatali veri girisi vaptiniz...");
@@ -75,96 +79,133 @@ public class Ogretmen {
 
     }
 
-    private static void branstanOgrtmnBulma() throws InterruptedException {
-
-        System.out.println("Aradiginiz ogretmenin brans ini giriniz...");
-        scan.nextLine();
-        String brans = scan.nextLine();
+    private static void kimlikNoileKayitSil() {
+        System.out.println("Silmek istedigniz ogrt kimlik no giriniz...");
+        String silinecekNo = scan.next();
 
 
-        Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
+
+        String sonuc=ogrtListMap.remove(silinecekNo);
+
+        if (silinecekNo.equals(sonuc)) {
+            System.out.println("Aradiginiz ogretmen silindi");
+        }else System.out.println("Aradiginiz ogretmen bulunamadi...");
 
 
-        System.out.println("============= YASAM KOLEJI =============\n" +
-                "=========== BRAS'TAN OGRETMEN BULMA ============\n" +
-                "TcNo        Isim   Soyisim   D.Yili  Brans");
+        }
 
-        for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
+        private static void bilgileriGirerekOgretmenEkle () {
+            System.out.println("TC no giriniz...");
+            String tc = scan.next();
+
+            System.out.println("Adini giriniz..");
+            String ad = scan.next();
+
+            System.out.println("Soyadini giriniz..");
+            String soyad = scan.next();
+
+            System.out.println("Dogum tarihi giriniz...");
+            String dogmTrhi = scan.next();
+
+            System.out.println("Brans giriniz...");
+            String brans = scan.next();
+
+            String ekleneckValue = ad + ", " + soyad + ", " + dogmTrhi + ", " + brans;
+            ogrtListMap.put(tc, ekleneckValue);
 
 
-            String eachKey = each.getKey();
-            String eachValue = each.getValue();
+        }
 
-            String eachValuearr[] = eachValue.split(", ");
+        private static void branstanOgrtmnBulma () throws InterruptedException {
 
-            if (brans.equalsIgnoreCase(eachValuearr[3])) {
+            System.out.println("Aradiginiz ogretmenin brans ini giriniz...");
+            scan.nextLine();
+            String brans = scan.nextLine();
+
+
+            Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
+
+
+            System.out.println("============= YASAM KOLEJI =============\n" +
+                    "=========== BRAS'TAN OGRETMEN BULMA ============\n" +
+                    "TcNo        Isim   Soyisim   D.Yili  Brans");
+
+            for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
+
+
+                String eachKey = each.getKey();
+                String eachValue = each.getValue();
+
+                String eachValuearr[] = eachValue.split(", ");
+
+                if (brans.equalsIgnoreCase(eachValuearr[3])) {
+                    System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                            eachValuearr[2], eachValuearr[3]);
+                }
+
+            }
+            Thread.sleep(5000);
+
+
+        }
+
+        private static void soyismdenOgrtmnBulma () throws InterruptedException {
+
+            System.out.println("Aradiginiz soyisimi giriniz...");
+            scan.nextLine();
+            String arananSoyisim = scan.nextLine();
+
+
+            Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
+
+
+            System.out.println("============= YASAM KOLEJI =============\n" +
+                    "=========== SOYISIMDEN OGRETMEN BULMA ============\n" +
+                    "TcNo        Isim   Soyisim   D.Yili  Brans");
+
+            for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
+
+
+                String eachKey = each.getKey();
+                String eachValue = each.getValue();
+
+                String eachValuearr[] = eachValue.split(", ");
+
+                if (arananSoyisim.equalsIgnoreCase(eachValuearr[1])) {
+                    System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                            eachValuearr[2], eachValuearr[3]);
+                }
+
+            }
+            Thread.sleep(5000);
+
+
+        }
+
+        private static void ogretmenListesiYazdir () throws InterruptedException {
+
+            Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
+
+            System.out.println("============= YASAM KOLEJI =============\n" +
+                    "=========== OGRETMEN LISTESI ============\n" +
+                    "TcNo        Isim   Soyisim   D.Yili  Brans");
+
+            for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
+                // System.out.println(each);
+
+                String eachKey = each.getKey();
+                String eachValue = each.getValue();
+
+                String eachValuearr[] = eachValue.split(", ");
+
+                // System.out.println("eachKey : " + eachKey);
+                // System.out.println("isim : " + eachValuearr[0]);
+                // System.out.println("brans :" + eachValuearr[1]);
+
                 System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3]);
+
             }
-
+            Thread.sleep(5000);
         }
-        Thread.sleep(5000);
-
-
     }
-
-    private static void soyismdenOgrtmnBulma() throws InterruptedException {
-
-        System.out.println("Aradiginiz soyisimi giriniz...");
-        scan.nextLine();
-        String arananSoyisim = scan.nextLine();
-
-
-        Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
-
-
-        System.out.println("============= YASAM KOLEJI =============\n" +
-                "=========== SOYISIMDEN OGRETMEN BULMA ============\n" +
-                "TcNo        Isim   Soyisim   D.Yili  Brans");
-
-        for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
-
-
-            String eachKey = each.getKey();
-            String eachValue = each.getValue();
-
-            String eachValuearr[] = eachValue.split(", ");
-
-            if (arananSoyisim.equalsIgnoreCase(eachValuearr[1])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
-                        eachValuearr[2], eachValuearr[3]);
-            }
-
-        }
-        Thread.sleep(5000);
-
-
-    }
-
-    private static void ogretmenListesiYazdir() throws InterruptedException {
-
-        Set<Map.Entry<String, String>> ogretmenMapEntrySet = ogrtListMap.entrySet();
-
-        System.out.println("============= YASAM KOLEJI =============\n" +
-                "=========== OGRETMEN LISTESI ============\n" +
-                "TcNo        Isim   Soyisim   D.Yili  Brans");
-
-        for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
-            // System.out.println(each);
-
-            String eachKey = each.getKey();
-            String eachValue = each.getValue();
-
-            String eachValuearr[] = eachValue.split(", ");
-
-            // System.out.println("eachKey : " + eachKey);
-            // System.out.println("isim : " + eachValuearr[0]);
-            // System.out.println("brans :" + eachValuearr[1]);
-
-            System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
-                    eachValuearr[2], eachValuearr[3]);
-
-        }
-        Thread.sleep(5000);
-    }
-}
