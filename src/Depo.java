@@ -6,6 +6,7 @@ public class Depo {
 
     public static void anaManu() throws InterruptedException {
         Ogretmen.fakeOgretmenLIst();
+        Ogrenci.feykOgrenciEkle();
 
         int tercih = 0;
 
@@ -29,6 +30,7 @@ public class Depo {
                     Ogretmen.ogretmenMenu();
                     break;
                 case 3: //Ogrenci Menu
+                    Ogrenci.ogrenciMenu();
                     break;
                 case 4: //ÇIKIS
                     cikiso();
@@ -47,5 +49,6 @@ public class Depo {
     protected static void cikiso() {
 
         System.out.println("Isleminizi sonlandirdiniz... Tesekkur ederiz...");
+        System.exit(0);
     }
 }
