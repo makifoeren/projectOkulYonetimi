@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 
-
 public class Ogrenci {
 
     static Scanner scan = new Scanner(System.in);
@@ -87,15 +86,22 @@ public class Ogrenci {
             String eachValuearr[] = eachValue.split(", ");
 
             if (sinif.equalsIgnoreCase(eachValuearr[4]) && sube.equalsIgnoreCase(eachValuearr[5])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                System.out.printf("%8s %-7s %-8s %-4s  %s %3s %8s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
+                break;
+            } else if (sinif != eachValuearr[4] || sinif != eachValuearr[5]) {
+                System.out.println("Aradiginiz ogrenci bulunamadi");
+                break;
+            }
+            else {
 
             }
         }
     }
+
     private static void soyIsimdenOgrenciBulma() throws InterruptedException {
         System.out.println("Aradiginiz ogrencinin soyismini giriniz...");
-        String soyIsim= scan.next();
+        String soyIsim = scan.next();
 
         Set<Map.Entry<String, String>> ogrenciMapEntrySet = ogrenciListeMap.entrySet();
 
@@ -113,7 +119,11 @@ public class Ogrenci {
             if (soyIsim.equalsIgnoreCase(eachValuearr[1])) {
                 System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
-
+                break;
+            } else if (soyIsim != eachValuearr[1]) {
+                System.out.println("Aradiginiz ogrenci bulunamadi");
+                break;
+            } else {
 
             }
             Thread.sleep(5000);
