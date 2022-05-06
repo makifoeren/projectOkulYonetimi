@@ -44,9 +44,11 @@ public class Ogrenci {
                 case 3://Sinif ve Sube Ile Ogrenci Bulma
                     sinifVeSubeIleOrenciBulma();
                     break;
-                case 4:
+                case 4://Bilgilerini Girerek Ogrenci Ekleme
+                    bilgileriGirerekOgrenciEkle();
                     break;
-                case 5:
+                case 5://Kimlik No Ile Kayit Silme
+                    kimlikNoIleSilmeIslemi();
                     break;
                 case 6:
                     Depo.anaManu();
@@ -64,6 +66,48 @@ public class Ogrenci {
 
         } while (tercih != 7);
 
+
+    }
+
+    private static void kimlikNoIleSilmeIslemi() {
+        System.out.println("Silmek istediginiz ogrencinin tc ");
+        String no= scan.next();
+
+        String sonuc= ogrenciListeMap.remove(no);
+
+        if (no.equals(sonuc)) {
+            System.out.println("Aradiginiz ogretmen silindi");
+
+        } else System.out.println("Aradiginiz ogretmen bulunamadi...");
+
+
+
+    }
+
+    private static void bilgileriGirerekOgrenciEkle() {
+        System.out.println("Ogrencinin TcNo giriniz...");
+        String TcNo=scan.next();
+
+        System.out.println("Ogrencinin adini giriniz...");
+        String adi=scan.next();
+
+        System.out.println("Ogrencinin soyadini giriniz...");
+        String soyadi=scan.next();
+
+        System.out.println("Ogrencinin dogum tarihi giriniz...");
+        String dTari=scan.next();
+
+        System.out.println("Ogrencinin numara giriniz...");
+        String numara=scan.next();
+
+        System.out.println("Ogrencinin sinifi giriniz...");
+        String sinif=scan.next();
+
+        System.out.println("Ogrencinin sube giriniz...");
+        String sube=scan.next();
+
+        String ekleneckValue = adi + ", " + soyadi + ", " + dTari + ", " + numara+", "+sinif+", "+sube;
+        ogrenciListeMap.put(TcNo, ekleneckValue);
 
     }
 
@@ -120,10 +164,12 @@ public class Ogrenci {
                 System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
                 break;
-            } else if (soyIsim != eachValuearr[1]) {
+            }
+            else if (soyIsim != eachValuearr[1]) {
                 System.out.println("Aradiginiz ogrenci bulunamadi");
                 break;
-            } else {
+            }
+            else {
 
             }
             Thread.sleep(5000);
