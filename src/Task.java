@@ -2,6 +2,7 @@ public class Task {
 
 /*
     BİR OKUL YÖNETİM PLATFORMU KODLAYINIZ.
+
     1.  Bu programda, Öğrenci ve Öğretmen Kayıtları ile ilgili işlemler yapılabilmelidir.
     Kayıtlarda şu bilgiler olabilmelidir.
     Öğretmen: Ad-Soyad,  kimlik No, yaş, bölüm, ve sicil No bilgileri içermelidir.

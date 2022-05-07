@@ -8,6 +8,18 @@ public class Depo {
         Ogretmen.fakeOgretmenLIst();
         Ogrenci.feykOgrenciEkle();
 
+
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print(".");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        System.out.println(" ");
+
         int tercih = 0;
 
         do {
@@ -20,11 +32,22 @@ public class Depo {
                     "\t   4- ÇIKIS\n");
 
             System.out.println("Lutfen yapmak istediniz islemi seciniz..");
-            tercih = scan.nextInt();
+
+            try {
+                tercih = scan.nextInt();
+                if(tercih<=0 || tercih>=5)
+                    System.out.println("1 ve 4 arsainda degerler giriniz.");
+            } catch (Exception e) {
+                String str=scan.nextLine();
+                System.out.println("Lutfen numerik veri giriniz...");
+            }
+
+            Thread.sleep(3000);
 
             switch (tercih) {
                 case 1: // Okul Bilgileri
                    Okul.okulBilgileri();
+                   Thread.sleep(3000);
                     break;
                 case 2: // Ogretmen Menu
                     Ogretmen.ogretmenMenu();
@@ -47,6 +70,16 @@ public class Depo {
     }
 
     protected static void cikiso() {
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print(".");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        System.out.println(" ");
 
         System.out.println("Isleminizi sonlandirdiniz... Tesekkur ederiz...");
         System.exit(0);

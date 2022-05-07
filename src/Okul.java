@@ -5,6 +5,7 @@ public class Okul {
     static final String telefon = "04842123456";
 
     public static void okulBilgileri() {
+
         System.out.println("\t\t Okul Ismi : " + Okul.okulIsmi +
                 "\n\t\t Adres : " + Okul.adres +
                 "\n\t\t Telefon : " + Okul.telefon);
@@ -14,5 +15,4 @@ public class Okul {
     private Okul() {
 
     }
-
 }

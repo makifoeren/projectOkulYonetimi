@@ -21,6 +21,7 @@ public class Ogrenci {
 
     public static void ogrenciMenu() throws InterruptedException {
         int tercih = 0;
+
         do {
             System.out.println("============= YASAM KOLEJI =============\n" +
                     "=========== OGRENCI MENU ============\n" +
@@ -32,22 +33,29 @@ public class Ogrenci {
                     "\t   6- ANAMENU\n" +
                     "\t   7- ÇIKIŞ");
 
-            tercih = scan.nextInt();
+            try {
+                tercih = scan.nextInt();
+                if(tercih<=0 || tercih>=8)
+                    System.out.println("1 ve 7 arsainda degerler giriniz.");
+            } catch (Exception e) {
+                String str=scan.nextLine();
+                System.out.println("Lutfen numerik veri giriniz...");
+            }
 
             switch (tercih) {
-                case 1: //Ogrenci Listesi Yazdir
+                case 1:
                     ogrenciListesiYazdir();
                     break;
-                case 2://Soyisimden Ogrenci Bulma
+                case 2:
                     soyIsimdenOgrenciBulma();
                     break;
-                case 3://Sinif ve Sube Ile Ogrenci Bulma
+                case 3:
                     sinifVeSubeIleOrenciBulma();
                     break;
-                case 4://Bilgilerini Girerek Ogrenci Ekleme
+                case 4:
                     bilgileriGirerekOgrenciEkle();
                     break;
-                case 5://Kimlik No Ile Kayit Silme
+                case 5:
                     kimlikNoIleSilmeIslemi();
                     break;
                 case 6:
@@ -58,7 +66,7 @@ public class Ogrenci {
                     break;
 
                 default:
-                    System.out.println("Hatali veri girdiniz...");
+                    System.out.println("Lutfen gecerli bir menu seciniz...");
                     ogrenciMenu();
 
             }
@@ -69,45 +77,46 @@ public class Ogrenci {
 
     }
 
-    private static void kimlikNoIleSilmeIslemi() {
+    private static void kimlikNoIleSilmeIslemi() throws InterruptedException {
         System.out.println("Silmek istediginiz ogrencinin tc ");
-        String no= scan.next();
+        String no = scan.next();
 
-        String sonuc= ogrenciListeMap.remove(no);
+        String sonuc = ogrenciListeMap.remove(no);
 
-        if (no.equals(sonuc)) {
-            System.out.println("Aradiginiz ogretmen silindi");
+        Thread.sleep(3000);
+        ogrenciListesiYazdir();
 
-        } else System.out.println("Aradiginiz ogretmen bulunamadi...");
-
+        Thread.sleep(2000);
 
 
     }
 
-    private static void bilgileriGirerekOgrenciEkle() {
+    private static void bilgileriGirerekOgrenciEkle() throws InterruptedException {
         System.out.println("Ogrencinin TcNo giriniz...");
-        String TcNo=scan.next();
+        String TcNo = scan.next();
 
         System.out.println("Ogrencinin adini giriniz...");
-        String adi=scan.next();
+        String adi = scan.next();
 
         System.out.println("Ogrencinin soyadini giriniz...");
-        String soyadi=scan.next();
+        String soyadi = scan.next();
 
         System.out.println("Ogrencinin dogum tarihi giriniz...");
-        String dTari=scan.next();
+        String dTari = scan.next();
 
         System.out.println("Ogrencinin numara giriniz...");
-        String numara=scan.next();
+        String numara = scan.next();
 
         System.out.println("Ogrencinin sinifi giriniz...");
-        String sinif=scan.next();
+        String sinif = scan.next();
 
         System.out.println("Ogrencinin sube giriniz...");
-        String sube=scan.next();
+        String sube = scan.next();
 
-        String ekleneckValue = adi + ", " + soyadi + ", " + dTari + ", " + numara+", "+sinif+", "+sube;
+        String ekleneckValue = adi + ", " + soyadi + ", " + dTari + ", " + numara + ", " + sinif + ", " + sube;
         ogrenciListeMap.put(TcNo, ekleneckValue);
+
+        Thread.sleep(3000);
 
     }
 
@@ -123,6 +132,8 @@ public class Ogrenci {
                 "=========== OGRENCI LISTESI ============\n" +
                 "TcNo        Isim   Soyisim   D Yili  Okul No  Sinif  Sube");
 
+        boolean kontrol = true;
+
         for (Map.Entry<String, String> each : ogrenciMapEntrySet) {
             String eachKey = each.getKey();
             String eachValue = each.getValue();
@@ -132,15 +143,14 @@ public class Ogrenci {
             if (sinif.equalsIgnoreCase(eachValuearr[4]) && sube.equalsIgnoreCase(eachValuearr[5])) {
                 System.out.printf("%8s %-7s %-8s %-4s  %s %3s %8s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
-                break;
-            } else if (sinif != eachValuearr[4] || sinif != eachValuearr[5]) {
-                System.out.println("Aradiginiz ogrenci bulunamadi");
-                break;
-            }
-            else {
-
+                kontrol = false;
             }
         }
+        if (kontrol) {
+            System.out.println("Aradiginiz ogrenci bulunamadi.");
+        }
+        Thread.sleep(3000);
+
     }
 
     private static void soyIsimdenOgrenciBulma() throws InterruptedException {
@@ -153,29 +163,24 @@ public class Ogrenci {
                 "=========== OGRENCI LISTESI ============\n" +
                 "TcNo        Isim   Soyisim   D Yili  Okul No  Sinif  Sube");
 
+        boolean kontrol = true;
+
         for (Map.Entry<String, String> each : ogrenciMapEntrySet) {
             String eachKey = each.getKey();
             String eachValue = each.getValue();
 
             String eachValuearr[] = eachValue.split(", ");
 
-
             if (soyIsim.equalsIgnoreCase(eachValuearr[1])) {
                 System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
-                break;
+                kontrol = false;
             }
-            else if (soyIsim != eachValuearr[1]) {
-                System.out.println("Aradiginiz ogrenci bulunamadi");
-                break;
-            }
-            else {
-
-            }
-            Thread.sleep(5000);
-
-
         }
+        if (kontrol) {
+            System.out.println("Aradiginiz ogrenci bulunamadi.");
+        }
+        Thread.sleep(3000);
     }
 
     private static void ogrenciListesiYazdir() throws InterruptedException {
@@ -199,8 +204,7 @@ public class Ogrenci {
                     eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
 
         }
-        Thread.sleep(5000);
-
+        Thread.sleep(3000);
 
     }
 }

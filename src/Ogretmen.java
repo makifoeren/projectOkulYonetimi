@@ -40,56 +40,57 @@ public class Ogretmen {
 
             System.out.println("Lutfen Ogretmen Menu den yapmak istediginiz islemi seciniz..");
 
-            tercih = scan.nextInt();
+            try {
+                tercih = scan.nextInt();
+                if(tercih<=0 || tercih>=8)
+                    System.out.println("1 ve 7 arsainda degerler giriniz.");
+            } catch (Exception e) {
+                String str=scan.nextLine();
+                System.out.println("Lutfen numerik veri giriniz...");
+            }
 
             switch (tercih) {
 
-                case 1: // Ogretmenler Listesi Yazdir
+                case 1:
                     ogretmenListesiYazdir();
-
                     break;
-                case 2: // Soyisimden Ogretmen Bulma
+                case 2:
                     soyismdenOgrtmnBulma();
                     break;
-                case 3: //Branstan Ogretmen Bulma
+                case 3:
                     branstanOgrtmnBulma();
                     break;
-                case 4: //Bilgilerini Girerek Ogretmen Ekleme
+                case 4:
                     bilgileriGirerekOgretmenEkle();
                     break;
-                case 5: //Kimlik No Ile Kayit Silme
+                case 5:
                     kimlikNoileKayitSil();
                     break;
-                case 6: //
+                case 6:
                     Depo.anaManu();
                     break;
-                case 7: //
+                case 7:
                     Depo.cikiso();
                     break;
                 default:
-                    System.out.println("Hatali veri girisi vaptiniz...");
-
+                    System.out.println("Lutfen gecerli bir menu seciniz...");
                     ogretmenMenu();
-
-
             }
 
         } while (tercih != 7);
-
-
     }
 
-    private static void kimlikNoileKayitSil() {
+    private static void kimlikNoileKayitSil() throws InterruptedException {
         System.out.println("Silmek istedigniz ogrt kimlik no giriniz...");
         String silinecekNo = scan.next();
 
         String sonuc = ogrtListMap.remove(silinecekNo);
 
-        if (silinecekNo.equals(sonuc)) {
-            System.out.println("Aradiginiz ogretmen silindi");
+        Thread.sleep(3000);
 
-        } else System.out.println("Aradiginiz ogretmen bulunamadi...");
+        ogretmenListesiYazdir();
 
+        Thread.sleep(2000);
     }
 
     private static void bilgileriGirerekOgretmenEkle() {
@@ -128,6 +129,9 @@ public class Ogretmen {
                 "=========== BRAS'TAN OGRETMEN BULMA ============\n" +
                 "TcNo        Isim   Soyisim   D.Yili  Brans");
 
+
+        boolean kontrol = true;
+
         for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
 
 
@@ -139,10 +143,14 @@ public class Ogretmen {
             if (brans.equalsIgnoreCase(eachValuearr[3])) {
                 System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3]);
+                kontrol = false;
             }
 
         }
-        Thread.sleep(5000);
+        if (kontrol) {
+            System.out.println("Aradiginiz bransta ogretmen bulunamadi.");
+        }
+        Thread.sleep(3000);
 
 
     }
@@ -159,7 +167,9 @@ public class Ogretmen {
 
         System.out.println("============= YASAM KOLEJI =============\n" +
                 "=========== SOYISIMDEN OGRETMEN BULMA ============\n" +
-                "TcNo        Isim   Soyisim   D.Yili  Brans");
+                "TcNo     Isim   Soyisim   D.Yili  Brans");
+
+        int kontrol = 0;
 
         for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
 
@@ -172,10 +182,16 @@ public class Ogretmen {
             if (arananSoyisim.equalsIgnoreCase(eachValuearr[1])) {
                 System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3]);
+                kontrol++;
             }
 
         }
-        Thread.sleep(5000);
+
+        if (kontrol == 0) {
+            System.out.println("Aradiginiz ogretmen bulunamadi.");
+        }
+
+        Thread.sleep(3000);
 
 
     }
@@ -186,7 +202,7 @@ public class Ogretmen {
 
         System.out.println("============= YASAM KOLEJI =============\n" +
                 "=========== OGRETMEN LISTESI ============\n" +
-                "TcNo        Isim   Soyisim   D.Yili  Brans");
+                "TcNo     Isim   Soyisim   D.Yili  Brans");
 
         for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
             // System.out.println(each);
@@ -200,10 +216,12 @@ public class Ogretmen {
             // System.out.println("isim : " + eachValuearr[0]);
             // System.out.println("brans :" + eachValuearr[1]);
 
-            System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
+            System.out.printf("%8s %-7s %-8s %-4s %4s \n", eachKey, eachValuearr[0], eachValuearr[1],
                     eachValuearr[2], eachValuearr[3]);
 
         }
-        Thread.sleep(5000);
+
+        Thread.sleep(3000);
+
     }
 }
