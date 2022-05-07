@@ -45,17 +45,17 @@ public class Depo {
             Thread.sleep(3000);
 
             switch (tercih) {
-                case 1: // Okul Bilgileri
+                case 1:
                    Okul.okulBilgileri();
                    Thread.sleep(3000);
                     break;
-                case 2: // Ogretmen Menu
+                case 2:
                     Ogretmen.ogretmenMenu();
                     break;
-                case 3: //Ogrenci Menu
+                case 3:
                     Ogrenci.ogrenciMenu();
                     break;
-                case 4: //ÇIKIS
+                case 4:
                     cikiso();
                     break;
                 default:

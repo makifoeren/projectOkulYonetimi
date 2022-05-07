@@ -10,12 +10,12 @@ public class Ogretmen {
 
     public static void fakeOgretmenLIst() {
 
-        ogrtListMap.put("12345678", "Ali, Can, 1980, Kimya");
-        ogrtListMap.put("12349012", "Ali, Yilmaz, 1978, Kimya");
-        ogrtListMap.put("12343456", "Mehmet, Gul, 1967, Fizik");
-        ogrtListMap.put("12347890", "Gamze, Gul, 2000, Fizik");
-        ogrtListMap.put("12341234", "Gamze, Yan, 1953, Turkce");
-        ogrtListMap.put("12340987", "Yildiz, Sen, 1982, Muzik");
+        ogrtListMap.put("12345678901","Ali, Can, 1980, Kimya");
+        ogrtListMap.put("12349012123","Ali, Yilmaz, 1978, Kimya");
+        ogrtListMap.put("12343456126","Mehmet, Gul, 1967, Fizik");
+        ogrtListMap.put("12347890654","Gamze, Gul, 2000, Fizik");
+        ogrtListMap.put("12341234435","Gamze, Yan, 1953, Turkce");
+        ogrtListMap.put("12340987533","Yildiz, Sen, 1982, Muzik");
 
 
     }
@@ -93,7 +93,7 @@ public class Ogretmen {
         Thread.sleep(2000);
     }
 
-    private static void bilgileriGirerekOgretmenEkle() {
+    private static void bilgileriGirerekOgretmenEkle() throws InterruptedException {
         System.out.println("TC no giriniz...");
         String tc = scan.next();
 
@@ -109,9 +109,13 @@ public class Ogretmen {
         System.out.println("Brans giriniz...");
         String brans = scan.next();
 
+
         String ekleneckValue = ad + ", " + soyad + ", " + dogmTrhi + ", " + brans;
         ogrtListMap.put(tc, ekleneckValue);
 
+        Thread.sleep(3000);
+
+        ogretmenListesiYazdir();
 
     }
 
@@ -141,7 +145,7 @@ public class Ogretmen {
             String eachValuearr[] = eachValue.split(", ");
 
             if (brans.equalsIgnoreCase(eachValuearr[3])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                System.out.printf("%11s %-6s  %-8s %4s    %s\n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3]);
                 kontrol = false;
             }
@@ -167,7 +171,7 @@ public class Ogretmen {
 
         System.out.println("============= YASAM KOLEJI =============\n" +
                 "=========== SOYISIMDEN OGRETMEN BULMA ============\n" +
-                "TcNo     Isim   Soyisim   D.Yili  Brans");
+                "TcNo        Isim   Soyisim   D.Yili  Brans");
 
         int kontrol = 0;
 
@@ -180,7 +184,7 @@ public class Ogretmen {
             String eachValuearr[] = eachValue.split(", ");
 
             if (arananSoyisim.equalsIgnoreCase(eachValuearr[1])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                System.out.printf("%11s %-6s  %-8s %4s    %s\n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3]);
                 kontrol++;
             }
@@ -202,7 +206,7 @@ public class Ogretmen {
 
         System.out.println("============= YASAM KOLEJI =============\n" +
                 "=========== OGRETMEN LISTESI ============\n" +
-                "TcNo     Isim   Soyisim   D.Yili  Brans");
+                "TcNo        Isim   Soyisim   D.Yili  Brans");
 
         for (Map.Entry<String, String> each : ogretmenMapEntrySet) {
             // System.out.println(each);
@@ -216,7 +220,7 @@ public class Ogretmen {
             // System.out.println("isim : " + eachValuearr[0]);
             // System.out.println("brans :" + eachValuearr[1]);
 
-            System.out.printf("%8s %-7s %-8s %-4s %4s \n", eachKey, eachValuearr[0], eachValuearr[1],
+            System.out.printf("%11s %-6s  %-8s %4s    %s\n", eachKey, eachValuearr[0], eachValuearr[1],
                     eachValuearr[2], eachValuearr[3]);
 
         }

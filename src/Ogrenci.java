@@ -35,10 +35,10 @@ public class Ogrenci {
 
             try {
                 tercih = scan.nextInt();
-                if(tercih<=0 || tercih>=8)
+                if (tercih <= 0 || tercih >= 8)
                     System.out.println("1 ve 7 arsainda degerler giriniz.");
             } catch (Exception e) {
-                String str=scan.nextLine();
+                String str = scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
             }
 
@@ -118,6 +118,8 @@ public class Ogrenci {
 
         Thread.sleep(3000);
 
+        ogrenciListesiYazdir();
+
     }
 
     private static void sinifVeSubeIleOrenciBulma() throws InterruptedException {
@@ -141,7 +143,7 @@ public class Ogrenci {
             String eachValuearr[] = eachValue.split(", ");
 
             if (sinif.equalsIgnoreCase(eachValuearr[4]) && sube.equalsIgnoreCase(eachValuearr[5])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s %3s %8s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                System.out.printf("%8s %-7s %-8s %-4s    %s    %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
                 kontrol = false;
             }
@@ -172,7 +174,7 @@ public class Ogrenci {
             String eachValuearr[] = eachValue.split(", ");
 
             if (soyIsim.equalsIgnoreCase(eachValuearr[1])) {
-                System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
+                System.out.printf("%8s %-7s %-8s %-4s    %s    %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                         eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
                 kontrol = false;
             }
@@ -200,7 +202,7 @@ public class Ogrenci {
             String eachValuearr[] = eachValue.split(", ");
 
 
-            System.out.printf("%8s %-7s %-8s %-4s  %s %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
+            System.out.printf("%8s %-7s %-8s %-4s    %s    %3s %5s \n", eachKey, eachValuearr[0], eachValuearr[1],
                     eachValuearr[2], eachValuearr[3], eachValuearr[4], eachValuearr[5]);
 
         }
