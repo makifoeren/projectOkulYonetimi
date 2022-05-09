@@ -38,7 +38,7 @@ public class Ogrenci {
             try {
                 tercih = scan.nextInt();
                 if (tercih <= 0 || tercih >= 8)
-                    System.out.println("1 ve 7 arsainda degerlerolmali.");
+                    System.out.println("1 ve 7 arsainda degerler olmali...");
             } catch (Exception e) {
                 String str = scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
@@ -153,7 +153,7 @@ public class Ogrenci {
             }
         }
         if (kontrol) {
-            System.out.println("Aradiginiz ogrenci bulunamadi.");
+            System.out.println("Aradiginiz ogrenci bulunamadi...");
         }
         Thread.sleep(3000);
 
@@ -184,7 +184,7 @@ public class Ogrenci {
             }
         }
         if (kontrol) {
-            System.out.println("Aradiginiz soyisimli ogrenci bulunamadi.");
+            System.out.println("Aradiginiz soyisimli ogrenci bulunamadi...");
         }
         Thread.sleep(3000);
     }

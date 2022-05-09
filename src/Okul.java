@@ -1,6 +1,6 @@
 public class Okul {
 
-    static final String okulIsmi = "Yasam Koleji";
+    static final String okulIsmi = "*** Yasam Koleji ***";
     static final String adres = "Siirt";
     static final String telefon = "048421234563";
 

@@ -38,12 +38,12 @@ public class Ogretmen {
                     "\t   6- ANAMENU\n" +
                     "\t   7- ÇIKIŞ\n");
 
-            System.out.println("Lutfen Ogretmen Menusun'den yapmak istediginiz islemi seciniz..");
+            System.out.println("Lutfen Ogretmen Menusun'den yapmak istediginiz islemi seciniz...");
 
             try {
                 tercih = scan.nextInt();
                 if(tercih<=0 || tercih>=8)
-                    System.out.println("1 ve 7 arsainda degerler olmali.");
+                    System.out.println("1 ile 7 arsainda degerler olmali.");
             } catch (Exception e) {
                 String str=scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
@@ -153,7 +153,7 @@ public class Ogretmen {
 
         }
         if (kontrol) {
-            System.out.println("Aradiginiz bransta ogretmen bulunamadi.");
+            System.out.println("Aradiginiz bransta ogretmen bulunamadi...");
         }
         Thread.sleep(3000);
 
@@ -193,7 +193,7 @@ public class Ogretmen {
         }
 
         if (kontrol == 0) {
-            System.out.println("Aradiginiz soyisimde ogretmen bulunamadi.");
+            System.out.println("Aradiginiz soyisimde ogretmen bulunamadi...");
         }
 
         Thread.sleep(3000);

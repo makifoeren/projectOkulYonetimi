@@ -36,7 +36,7 @@ public class Depo {
             try {
                 tercih = scan.nextInt();
                 if(tercih<=0 || tercih>=5)
-                    System.out.println("1 ve 4 arsainda degerler giriniz.");
+                    System.out.println("1 ile 4 arsainda degerler giriniz.");
             } catch (Exception e) {
                 String str=scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
