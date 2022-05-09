@@ -31,7 +31,7 @@ public class Depo {
                     "\t   3- Ogrenci Menu\t\t \n" +
                     "\t   4- ÇIKIS\n");
 
-            System.out.println("Lutfen yapmak istediniz islemi seciniz..");
+            System.out.println("Lutfen yapmak istediniz islemi seciniz...");
 
             try {
                 tercih = scan.nextInt();

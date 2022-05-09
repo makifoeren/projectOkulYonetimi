@@ -38,16 +38,17 @@ public class Ogretmen {
                     "\t   6- ANAMENU\n" +
                     "\t   7- ÇIKIŞ\n");
 
-            System.out.println("Lutfen Ogretmen Menu den yapmak istediginiz islemi seciniz..");
+            System.out.println("Lutfen Ogretmen Menusun'den yapmak istediginiz islemi seciniz..");
 
             try {
                 tercih = scan.nextInt();
                 if(tercih<=0 || tercih>=8)
-                    System.out.println("1 ve 7 arsainda degerler giriniz.");
+                    System.out.println("1 ve 7 arsainda degerler olmali.");
             } catch (Exception e) {
                 String str=scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
             }
+            Thread.sleep(3000);
 
             switch (tercih) {
 
@@ -73,7 +74,7 @@ public class Ogretmen {
                     Depo.cikiso();
                     break;
                 default:
-                    System.out.println("Lutfen gecerli bir menu seciniz...");
+                    System.out.println("Lutfen menu'den gecerli bir secim yapiniz...");
                     ogretmenMenu();
             }
 
@@ -81,7 +82,7 @@ public class Ogretmen {
     }
 
     private static void kimlikNoileKayitSil() throws InterruptedException {
-        System.out.println("Silmek istedigniz ogrt kimlik no giriniz...");
+        System.out.println("Silmek istedigniz ogretmenin kimlik nosunu giriniz...");
         String silinecekNo = scan.next();
 
         String sonuc = ogrtListMap.remove(silinecekNo);
@@ -107,8 +108,8 @@ public class Ogretmen {
         String dogmTrhi = scan.next();
 
         System.out.println("Brans giriniz...");
+        System.out.println("->Map yapisindan dolayi brans i tek kelime girmelisiniz<-");
         String brans = scan.next();
-
 
         String ekleneckValue = ad + ", " + soyad + ", " + dogmTrhi + ", " + brans;
         ogrtListMap.put(tc, ekleneckValue);
@@ -121,7 +122,7 @@ public class Ogretmen {
 
     private static void branstanOgrtmnBulma() throws InterruptedException {
 
-        System.out.println("Aradiginiz ogretmenin brans ini giriniz...");
+        System.out.println("Aradiginiz ogretmenin brans'ini giriniz...");
         scan.nextLine();
         String brans = scan.nextLine();
 
@@ -192,7 +193,7 @@ public class Ogretmen {
         }
 
         if (kontrol == 0) {
-            System.out.println("Aradiginiz ogretmen bulunamadi.");
+            System.out.println("Aradiginiz soyisimde ogretmen bulunamadi.");
         }
 
         Thread.sleep(3000);

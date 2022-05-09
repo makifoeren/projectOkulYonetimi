@@ -33,14 +33,18 @@ public class Ogrenci {
                     "\t   6- ANAMENU\n" +
                     "\t   7- ÇIKIŞ");
 
+            System.out.println("Lutfen Ogrenci Menusun'den yapmak istediginiz islemi seciniz..");
+
             try {
                 tercih = scan.nextInt();
                 if (tercih <= 0 || tercih >= 8)
-                    System.out.println("1 ve 7 arsainda degerler giriniz.");
+                    System.out.println("1 ve 7 arsainda degerlerolmali.");
             } catch (Exception e) {
                 String str = scan.nextLine();
                 System.out.println("Lutfen numerik veri giriniz...");
             }
+
+            Thread.sleep(3000);
 
             switch (tercih) {
                 case 1:
@@ -66,7 +70,7 @@ public class Ogrenci {
                     break;
 
                 default:
-                    System.out.println("Lutfen gecerli bir menu seciniz...");
+                    System.out.println("Lutfen menu'den gecerli bir secim yapiniz...");
                     ogrenciMenu();
 
             }
@@ -78,7 +82,7 @@ public class Ogrenci {
     }
 
     private static void kimlikNoIleSilmeIslemi() throws InterruptedException {
-        System.out.println("Silmek istediginiz ogrencinin tc ");
+        System.out.println("Silmek istediginiz ogrencinin tc nosunu giriniz... ");
         String no = scan.next();
 
         String sonuc = ogrenciListeMap.remove(no);
@@ -180,7 +184,7 @@ public class Ogrenci {
             }
         }
         if (kontrol) {
-            System.out.println("Aradiginiz ogrenci bulunamadi.");
+            System.out.println("Aradiginiz soyisimli ogrenci bulunamadi.");
         }
         Thread.sleep(3000);
     }
